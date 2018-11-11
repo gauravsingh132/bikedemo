@@ -1,6 +1,5 @@
 package testcases;
 
-import org.junit.Test;
 
 import Basepack.Base;
 import pages.Firstpage;

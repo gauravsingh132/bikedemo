@@ -1,11 +1,9 @@
 package pages;
 
-import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -27,11 +25,8 @@ public class Firstpage {
 	}
 	public static void PurchaseDate_Month(WebDriver driver,String value)
 	{
-		List<WebElement> ele= driver.findElements(By.xpath("//select[@id='PurchaseDate_Month']//option"));
-		for(WebElement arr: ele)
-		{
-			System.out.println(arr);
-		}
+		WebDriverWait wait= new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//select[@id='PurchaseDate_Month']"))).click();
 		/*
 		WebDriverWait wait= new WebDriverWait(driver, 5000);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//select[@id='PurchaseDate_Month']//option[text()='12- décembre']")));
@@ -45,10 +40,13 @@ public class Firstpage {
 	}
 	public static void PurchaseDate_Year(WebDriver driver,String value)
 	{
-		Actions act = new Actions(driver);
-		act.sendKeys(Keys.TAB).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).build().perform();
-		//Select sel3=new Select(driver.findElement(By.id("PurchaseDate_Year")));
-		//sel3.selectByVisibleText(value);
+		WebDriverWait wait= new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//select[@id='PurchaseDate_Year']"))).click();
+		
+		//Actions act = new Actions(driver);
+		//act.sendKeys(Keys.TAB).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).build().perform();
+		Select sel3=new Select(driver.findElement(By.id("PurchaseDate_Year")));
+		sel3.selectByVisibleText(value);
 	}
 	public static void btnFindMyBike(WebDriver driver,String value)
 	{
